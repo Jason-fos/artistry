@@ -35,7 +35,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '8000-jason-fos-artistry-fyynzs33jx.us2.codeanyapp.com',
-    'artistry.herokuapp.com',
+    'artistry-304a936197e5.herokuapp.com',
 ]
 
 # Application definition
