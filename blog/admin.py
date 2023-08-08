@@ -11,9 +11,6 @@ class PostAdmin(SummernoteModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     summernote_fields = ('content',)
 
-    def approve_post(self, request, queryset):
-        queryset.update(approved=True)
-
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
