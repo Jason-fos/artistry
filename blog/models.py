@@ -8,9 +8,16 @@ STATUS = (
     (1, "Publish"),
 )
 
+# category choices
+CATEGORY_CHOICES = (
+    ("1", "paintings"),
+    ("2", "models and sculptures"),
+    ("3", "street art"),
+    ("4", "other"),
+)
+
+
 # the author model
-
-
 class Author(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_pic = CloudinaryField("image", default="placeholder")
@@ -21,6 +28,11 @@ class Author(models.Model):
 
 # model for posts
 class Post(models.Model):
+    category = models.CharField(
+        max_length=25,
+        choices=CATEGORY_CHOICES,
+        default=1,
+        )
     title = models.CharField(max_length=25, unique=True)
     slug = models.SlugField(max_length=25, unique=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -62,13 +74,6 @@ class Comment(models.Model):
 # model for post categories
 
 class Category(models.Model):
-    CATEGORY_CHOICES = (
-        ("1", "paintings"),
-        ("2", "models and sculptures"),
-        ("3", "street art"),
-        ("4", "other"),
-    )
-
     title = models.CharField(max_length=25)
     subtitle = models.CharField(max_length=25)
     slug = models.SlugField()
