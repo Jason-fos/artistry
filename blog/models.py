@@ -43,6 +43,7 @@ class Post(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(User, related_name="blog_likes", blank=True)
+    featured = models.BooleanField()
 
     class Meta:
         ordering = ["-created_on"]
