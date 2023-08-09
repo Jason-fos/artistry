@@ -8,6 +8,16 @@ STATUS = (
     (1, "Publish"),
 )
 
+# the author model
+
+
+class Author(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    profile_pic = CloudinaryField("image", default="placeholder")
+
+    def __str__(self):
+        return self.user.username
+
 
 # model for posts
 class Post(models.Model):
