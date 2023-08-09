@@ -50,11 +50,20 @@ class Comment(models.Model):
 
 
 # model for post categories
+
 class Category(models.Model):
+    CATEGORY_CHOICES = (
+        ("1", "paintings"),
+        ("2", "models and sculptures"),
+        ("3", "street art"),
+        ("4", "other"),
+    )
+
     title = models.CharField(max_length=25)
     subtitle = models.CharField(max_length=25)
     slug = models.SlugField()
     thumbnail = CloudinaryField("image", default="placeholder")
+    choices = CATEGORY_CHOICES
 
     def __str__(self):
         return self.title
